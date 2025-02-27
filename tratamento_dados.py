@@ -23,6 +23,9 @@ def verificacao_reg(email, senha, c_senha):
         return False
     else: 
         return True
+    
+
+    
 
 def log(email, senha):
     if verificacao_log == True:
