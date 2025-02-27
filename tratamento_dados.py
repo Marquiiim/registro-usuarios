@@ -14,23 +14,35 @@ def verificacao_log(email, senha):
 def verificacao_reg(email, senha, c_senha):
     if ".com" not in email and "@" not in email:
         print("Email incompleto, inclua '@' e '.com'.")
-        return False
+        return True
     elif len(senha) < 8:
         print("Sua senha deve ter no mínimo 8 dígitos.")
-        return False
+        return True
     elif senha != c_senha:
         print("Senhas diferentes.")
-        return False
-    else: 
         return True
+    else: 
+        return False
     
 
     
 
 def log(email, senha):
-    if verificacao_log == True:
-        print("Logado com sucesso")
+    print(f"""
+============ RESPOSTA ============
+
+     !!!LOGADO COM SUCESSO!!!
+
+==================================
+""")
 
 def reg(email, senha, c_senha):
-    if verificacao_reg == True:
-        print("Registrado com sucesso")
+
+
+    print(f"""
+============ RESPOSTA ============
+
+    !!!REGISTRADO COM SUCESSO!!!
+
+==================================
+""")

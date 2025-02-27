@@ -1,12 +1,9 @@
 from dados import registros
 from tratamento_dados import verificacao_log, verificacao_reg, log, reg
-from templates import menu, logar, registro
+from templates import menu, logar_dinamic, logar, registro_dinamic, registro
 
 
 while True:
-    template_menu = menu
-    template_login = logar
-    template_register = registro
 
     options = input(menu).upper()
 
@@ -14,23 +11,21 @@ while True:
         while True:
             email = input(logar)
             senha = input(logar)
-            verificacao_log(email=email, senha=senha)
+            verificacao_log(email, senha)
             if verificacao_log == False:
                 break
             else:
                 print("Tente novamente.\n")
-        log(email=email, senha=senha)
-        
-
+        log(email, senha)
 
     elif options == "R":
         while True:
             email = input(registro)
             senha = input(registro)
             c_senha = input(registro)
-            verificacao_reg(email=email, senha=senha, c_senha=senha)
+            verificacao_reg(email, senha, c_senha)
             break
-        reg(email=email, senha=senha, c_senha=senha)
+        reg(email, senha, c_senha)
 
     elif options == "X":
         raise SystemExit("Sistema finalizado.")
