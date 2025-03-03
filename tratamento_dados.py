@@ -3,7 +3,6 @@ from dados import credenciais, registros
 def verificacao_log(email, senha):
     if email in credenciais:
         if credenciais[email]["senha"] == senha:
-            log()
             return True
         else:
             print("Senha incorreta, por favor tente novamente")
@@ -15,18 +14,22 @@ def verificacao_log(email, senha):
 def verificacao_reg(email, senha, c_senha):
     if ".com" not in email and "@" not in email:
         print("Credencial incompleta, inclua '@' e '.com'.")
-        return True
+        return False
     elif len(senha) < 8:
         print("Sua senha deve ter no mínimo 8 dígitos.")
-        return True
+        return False
     elif senha != c_senha:
         print("Senhas diferentes.")
-        return True
+        return False
     else:
-        registros[email] = [senha] 
+        updateCredenciais(email, senha)
+        return True
+
+
+def updateCredenciais(email, senha):
+        registros[email] = {"senha": senha} 
         credenciais.update(registros)
-        reg()
-        
+
 
 def log():
     print(f"""
