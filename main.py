@@ -1,4 +1,3 @@
-from dados import registros
 from tratamento_dados import verificacao_log, verificacao_reg, log, reg
 from templates import menu, logar_dinamic, logar, registro_dinamic, registro
 
@@ -11,9 +10,8 @@ while True:
         while True:
             email = input(logar)
             senha = input(logar)
-            verificacao_log(email, senha)
             print(logar_dinamic(email, senha))
-            if verificacao_log == False:
+            if verificacao_log(email, senha) == True:
                 break
             else:
                 print("Tente novamente.\n")
