@@ -1,1 +1,8 @@
-{"teste123@gmail.com": {"senha": "teste123"}, "marcosteste@gmail.com": {"senha": "teste1234"}}
+{
+    "emailteste123@gmail.com": {
+        "senha": "teste1234"
+    },
+    "emailemail@gmail.com": {
+        "senha": "teste123"
+    }
+}
