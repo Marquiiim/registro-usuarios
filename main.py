@@ -1,5 +1,5 @@
 from tratamento_dados import verificacao_log, verificacao_reg, log, reg
-from templates import menu, logar_dinamic, logar, registro_dinamic, registro
+from templates import menu, logar_dinamic, registro_dinamic
 
 
 while True:
@@ -8,8 +8,8 @@ while True:
 
     if options == "L":
         while True:
-            email = input(logar)
-            senha = input(logar)
+            email = input(logar_dinamic())
+            senha = input(logar_dinamic(email))
             if verificacao_log(email, senha) == True:
                 print(logar_dinamic(email, senha))
                 break
@@ -19,9 +19,9 @@ while True:
 
     elif options == "R":
         while True:
-            email = input(registro)
-            senha = input(registro)
-            c_senha = input(registro)
+            email = input(registro_dinamic())
+            senha = input(registro_dinamic(email))
+            c_senha = input(registro_dinamic(email, senha))
             if verificacao_reg(email, senha, c_senha) == True:
                 print(registro_dinamic(email, senha, c_senha))
                 break

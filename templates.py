@@ -8,19 +8,7 @@ menu = f"""
 ==============================
 =>"""
 
-
-logar = f"""
-============ LOGAR ============
-
-        Email:
-        Senha:
-
-        [C] Cancelar
-
-==============================
-=>"""
-
-def logar_dinamic(email, senha):   
+def logar_dinamic(email="", senha=""):   
         logar = f"""
 ============ LOGAR ============
 
@@ -33,20 +21,7 @@ Senha: {senha}
 =>"""
         return logar
 
-
-
-registro = f"""
-============ REGISTRO ============
-
-Email:
-Senha:
-Repita sua senha:
-
-        [C] Cancelar
-
-==============================
-=>"""
-def registro_dinamic(email, senha, c_senha):
+def registro_dinamic(email="", senha="", c_senha=""):
         registro = f"""
 ============ REGISTRO ============
 

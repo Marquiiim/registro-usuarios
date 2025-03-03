@@ -12,7 +12,7 @@ def verificacao_log(email, senha):
         return False
     
 def verificacao_reg(email, senha, c_senha):
-    if ".com" not in email and "@" not in email:
+    if ".com" not in email or "@" not in email:
         print("Credencial incompleta, inclua '@' e '.com'.")
         return False
     elif len(senha) < 8:
