@@ -1,7 +1,2 @@
-credenciais = {
-
-}
-
-registros = {
-
-}
+credenciais = {}
+registros = {}

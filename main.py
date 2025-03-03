@@ -1,4 +1,4 @@
-from tratamento_dados import verificacao_log, verificacao_reg, log, reg
+from tratamento_dados import verificacao_log, verificacao_reg, loadCredenciais, log, reg
 from templates import menu, logar_dinamic, registro_dinamic
 
 
@@ -28,6 +28,9 @@ while True:
             else:
                 print("Tente novamente.\n")
         reg()
+
+    elif options == "D":
+        loadCredenciais()
 
     elif options == "X":
         raise SystemExit("Sistema finalizado.")

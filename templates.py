@@ -2,7 +2,8 @@ menu = f"""
 ============ MENU ============
 
         [L] Logar
-        [R] Registrar 
+        [R] Registrar
+        [D] Dados do sistema
         [X] Sair do sistema
 
 ==============================

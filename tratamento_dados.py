@@ -1,4 +1,5 @@
 from dados import credenciais, registros
+import json
 
 def verificacao_log(email, senha):
     if email in credenciais:
@@ -28,8 +29,28 @@ def verificacao_reg(email, senha, c_senha):
 
 def updateCredenciais(email, senha):
         registros[email] = {"senha": senha} 
-        credenciais.update(registros)
+        credenciais_admin = credenciais.update(registros)
+        saveCredenciais(credenciais_admin)
 
+
+def saveCredenciais(registros, arquivo = "credenciais.json"):
+    with open(arquivo, "w") as f:
+        return json.dump(credenciais, f)
+
+
+def loadCredenciais(arquivo = "credenciais.json"):
+    try:
+        with open(arquivo, "r") as f:
+            credenciais = json.load(f)
+
+            for email, info in credenciais.items():
+                print(f"""
+                ==============================
+                    Email: {email}
+                    Senha: {info["senha"]}
+                """)
+    except FileNotFoundError:
+        return {}
 
 def log():
     print(f"""
