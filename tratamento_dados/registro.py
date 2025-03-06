@@ -1,5 +1,6 @@
-from dados.dados import registros
+from dados.dados import registros, usuarios
 import json
+import shutil
 
 # VERIFICAÇÃO DE CREDENCIAIS CORRETAS PARA O REGISTRO NO BANCO DE DADOS
 def verificacao_reg(email, senha, c_senha):
@@ -19,13 +20,31 @@ def verificacao_reg(email, senha, c_senha):
 
 # IMPORTANDO AS CREDENCIAIS PARA O DICIONÁRIO LOCALIZADO EM DADOS.PY
 def updateCredenciais(email, senha, acesso="[NOVA] SEM ACESSO"):
-        registros[email] = {"senha": senha, "acesso": acesso} 
-        saveCredenciais(registros)
+    registros[email] = {"senha": senha, "acesso": acesso}
+
+    dados_gerais = usuarios.copy()
+    dados_gerais.update(registros)
+    
+    try:
+        shutil.copyfile("credenciais.json", "credenciais_backup.json")
+    except FileNotFoundError:
+        pass
+
+    saveCredenciais(dados_gerais)
+        
 
 # SALVANDO AS CREDENCIAIS DE ACORDO COM INFORMAÇÕES PRESENTES NO BANCO DE DADOS .PY
-def saveCredenciais(registros, arquivo = "credenciais.json"):
+def saveCredenciais(dados_credenciais, arquivo = "credenciais.json"):
+    try:
+        with open(arquivo, "r") as f:
+            credenciais_existentes = json.load(f)
+    except:
+        credenciais_existentes = {}
+
+    credenciais_existentes.update(dados_credenciais)
+
     with open(arquivo, "w") as f:
-        return json.dump(registros, f)
+        json.dump(credenciais_existentes, f, indent=4)
     
 # MENSAGEM DE SUCESSO
 def reg():
