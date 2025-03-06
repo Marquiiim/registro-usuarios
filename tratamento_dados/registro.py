@@ -22,8 +22,7 @@ def verificacao_reg(email, senha, c_senha):
 def updateCredenciais(email, senha, acesso="[NOVA] SEM ACESSO"):
     registros[email] = {"senha": senha, "acesso": acesso}
 
-    dados_gerais = usuarios.copy()
-    dados_gerais.update(registros)
+    dados_gerais = usuarios | registros
     
     try:
         shutil.copyfile("credenciais.json", "credenciais_backup.json")
