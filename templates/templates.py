@@ -1,3 +1,5 @@
+# ÁREA DE TEMPLATES VISUAIS
+
 menu = f"""
 ============ MENU ============
 

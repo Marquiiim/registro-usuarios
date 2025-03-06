@@ -1,0 +1,5 @@
+# USUÁRIOS REGISTRADOS
+usuarios = {}
+
+# COLETA DE DADOS PARA REGISTRO E JUNÇÃO
+registros = {}

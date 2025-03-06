@@ -1,5 +1,7 @@
-from tratamento_dados import verificacao_log, verificacao_reg, loadCredenciais, log, reg
-from templates import menu, logar_dinamic, registro_dinamic
+from tratamento_dados.login import verificacao_log, log
+from tratamento_dados.registro import verificacao_reg, reg
+from tratamento_dados.admin import loadCredenciais
+from templates.templates import menu, logar_dinamic, registro_dinamic
 
 
 while True:
@@ -12,10 +14,10 @@ while True:
             senha = input(logar_dinamic(email))
             if verificacao_log(email, senha) == True:
                 print(logar_dinamic(email, senha))
+                log()
                 break
             else:
                 print("Tente novamente.\n")
-        log()
 
     elif options == "R":
         while True:
@@ -24,10 +26,10 @@ while True:
             c_senha = input(registro_dinamic(email, senha))
             if verificacao_reg(email, senha, c_senha) == True:
                 print(registro_dinamic(email, senha, c_senha))
+                reg()
                 break
             else:
                 print("Tente novamente.\n")
-        reg()
 
     elif options == "D":
         loadCredenciais()
