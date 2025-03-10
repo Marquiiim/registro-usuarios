@@ -2,7 +2,7 @@ from dados.dados import usuarios
 from datetime import datetime
 
 # VERIFICAÇÃO PARA LOGIN E COLETA DE ACESSO PARA ADICIONAR HORÁRIO DE ACESSO
-def verificacao_log(email, senha):
+def verification_login(email, senha):
     acesso = datetime.now()
     
     if email in usuarios:

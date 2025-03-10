@@ -2,24 +2,34 @@ from dados.dados import registros, usuarios
 import json
 import shutil
 
+# CARREGA O ARQUIVO JSON QUE CONTÉM AS CREDENCIAIS PARA A FUNÇÃO VERIFICATION_REGISTRER FAZER A ANÁLISE DO DOCUMENTO.
+def load_credentials(arquivo = "credenciais.json"):
+    with open(arquivo, "r") as f:
+        registros = json.load(f)
+    return registros
+
 # VERIFICAÇÃO DE CREDENCIAIS CORRETAS PARA O REGISTRO NO BANCO DE DADOS
-def verificacao_reg(email, senha, c_senha):
-    if ".com" not in email or "@" not in email:
-        print("Credencial incompleta, inclua '@' e '.com'.")
+def verification_register(email, senha, c_senha):
+    credenciais = load_credentials()
+
+    if email in credenciais:
+        print("[ERROR] Email já cadastrado.")
+    elif ".com" not in email or "@" not in email:
+        print("[ERROR] Credencial incompleta, inclua '@' e '.com'.")
         return False
     elif len(senha) < 8:
-        print("Sua senha deve ter no mínimo 8 dígitos.")
+        print("[ERROR] Sua senha deve ter no mínimo 8 dígitos.")
         return False
     elif senha != c_senha:
-        print("Senhas diferentes.")
+        print("[ERROR] Senhas diferentes.")
         return False
     else:
-        updateCredenciais(email, senha)
+        update_credenciais(email, senha)
         return True
 
 
 # IMPORTANDO AS CREDENCIAIS PARA O DICIONÁRIO LOCALIZADO EM DADOS.PY
-def updateCredenciais(email, senha, acesso="[NOVA] SEM ACESSO"):
+def update_credenciais(email, senha, acesso="[NOVA] SEM ACESSO"):
     registros[email] = {"senha": senha, "acesso": acesso}
 
     dados_gerais = usuarios | registros
@@ -29,11 +39,11 @@ def updateCredenciais(email, senha, acesso="[NOVA] SEM ACESSO"):
     except FileNotFoundError:
         pass
 
-    saveCredenciais(dados_gerais)
+    save_credenciais(dados_gerais)
         
 
 # SALVANDO AS CREDENCIAIS DE ACORDO COM INFORMAÇÕES PRESENTES NO BANCO DE DADOS .PY
-def saveCredenciais(dados_credenciais, arquivo = "credenciais.json"):
+def save_credenciais(dados_credenciais, arquivo = "credenciais.json"):
     try:
         with open(arquivo, "r") as f:
             credenciais_existentes = json.load(f)

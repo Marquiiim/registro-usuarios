@@ -1,17 +1,18 @@
 # ÁREA DE TEMPLATES VISUAIS
 
 menu = f"""
-============ MENU ============
+============= MENU =============
 
         [L] Logar
         [R] Registrar
         [D] Dados do sistema
         [X] Sair do sistema
 
-==============================
+================================
 =>"""
 
-def logar_dinamic(email="", senha=""):   
+
+def logar_dinamic(email="", senha=""):
         logar = f"""
 ============ LOGAR ============
 
@@ -20,20 +21,21 @@ Senha: {senha}
 
         [C] Cancelar
 
-==============================
+===============================
 =>"""
         return logar
 
+
 def registro_dinamic(email="", senha="", c_senha=""):
         registro = f"""
-============ REGISTRO ============
+============= REGISTRO =============
 
-        Email: {email}
-        Senha: {senha}
-        Repita sua senha: {c_senha}
+Email: {email}
+Senha: {senha}
+Repita sua senha: {c_senha}
 
         [C] Cancelar
 
-==============================
+====================================
 =>"""
         return registro

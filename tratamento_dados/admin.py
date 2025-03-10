@@ -1,7 +1,7 @@
 import json
 
 # MOSTRANDO CREDENCIAIS ARMAZENADAS NO ARQUIVO JSON
-def loadCredenciais(arquivo = "credenciais.json"):
+def load_credenciais(arquivo = "credenciais.json"):
     try:
         with open(arquivo, "r") as f:
             registros = json.load(f)
@@ -12,5 +12,6 @@ def loadCredenciais(arquivo = "credenciais.json"):
                     Senha: {info["senha"]}
                     Último acesso: {info["acesso"]}
                 """)
+            return registros
     except FileNotFoundError:
         return {}
